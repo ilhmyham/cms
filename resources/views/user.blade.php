@@ -120,10 +120,21 @@
         @endforeach --}}
         <div class="container">
             <div class="card">
+                <div class="card-header">
+                    <center><h4>{{ $data->training }}</h4></center>
+                </div>
                 <div class="container"></div>
-                <img src="{{ url('foto/laravel-featured.png') }}" alt="">
+                    <center><img width="500" src="{{ url('pict/'. $data->gambar) }}" alt=""></center>
+
                 <div class="card-body">
-                <form method="POST" action="">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h6>Deskripsi :</h6>
+                            <p>{{ $data->deskripsi }}</p>
+                        </div>
+                    </div>
+
+                <form method="POST" action="{{ route('dataUser.store') }}">
                     @csrf
                     <div class="row">
                         <div class="form-group mb-4 col">
@@ -147,10 +158,15 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label for="training">training</label>
-                        <input type="text" name="training" value="{{ $data->training }}" class="form-control" id="training" aria-describedby="training">
+                        <div class="card" style="width: 18rem;">
+                            <label for="No_telp">harga</label>
+                            <h2>Rp. {{ $data->harga }}</h2>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Daftar</button>
+
+                    <input type="hidden" name="id_training" value="{{ $data->id }}" class="form-control" id="training" aria-describedby="training">
+
+                    <button type="submit" class="btn btn-primary btn-lg">Daftar</button>
                 </form>
             </div>
         </div>

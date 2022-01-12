@@ -38,13 +38,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
       <div class="content">
-        <form method='POST'action="{{route('dataAdmin.update', $data->id)}}">
+        <form method='POST'action="{{route('dataAdmin.update', $data->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
-              <label for="nama" class="form-label">nama</label>
-              <input type="text" name="nama" value="{{$data->nama}}" class="form-control" id="nama">
-              <div id="nama" class="form-text">Masukkan Nama</div>
+                <label for="training" class="form-label">training</label>
+                <input type="text" name="training"  value="{{$data->training}}" class="form-control" id="training">
+                <div id="training" class="form-text">Masukkan Training</div>
+              </div>
+              <div class="mb-3">
+                <label for="gambar" class="form-label">Gambar</label>
+                <input type="file" value="{{ $data->gambar }}" name="gambar" class="form-control" id="gambar">
+                <div id="gambar" class="form-text">Masukkan gambar</div>
+              </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    <label for="deskripsi" class="form-label">deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi" cols="228" rows="10" id="floatingTextarea2" style="height: 100px">{{ $data->deskripsi }}</textarea>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="mentor" class="form-label">mentor</label>
@@ -55,11 +66,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <label for="waktu" class="form-label">waktu</label>
                 <input type="text" name="waktu"  value="{{$data->waktu}}" class="form-control" id="waktu">
                 <div id="waktu" class="form-text">Masukkan Waktu</div>
-              </div>
-              <div class="mb-3">
-                <label for="training" class="form-label">training</label>
-                <input type="text" name="training"  value="{{$data->training}}" class="form-control" id="training">
-                <div id="training" class="form-text">Masukkan Training</div>
               </div>
               <div class="mb-3">
                 <label for="harga" class="form-label">harga</label>

@@ -69,15 +69,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <table class="table table-bordered">
                         <tr>
+                            <th>No</th>
                             <th>training</th>
+                            <th>Img</th>
+                            <th>Deskripsi</th>
                             <th>Mentor</th>
                             <th>waktu</th>
                             <th>harga</th>
                         </tr>
+                        @php
+                            $no = 1;
+                        @endphp
                         @foreach ($dataKu as $data )
                         <tr>
+                            <td>{{ $no++ }}</td>
                             <td>{{ $data->training }}</td>
-                            <td>{{$data->mentor }}</td>
+                            <td><center><img width="100px" src="{{ url('pict/'.$data->gambar) }}"></center></td>
+                            <td>{{ $data->deskripsi }}</td>
+                            <td>{{ $data->mentor }}</td>
                             <td>{{ $data->waktu }}</td>
                             <td>{{ $data->harga }}</td>
                             <td class="text-center">

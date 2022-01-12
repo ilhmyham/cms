@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\dataAdmin;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,12 +16,26 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        dataAdmin::create([
-            'nama' => 'risang',
-            'mentor' => 'edy',
-            'waktu' => '08.00 - 16.00',
-            'training' => 'Laravel Dasar'
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@test.test',
+            'role' => 'admin',
+            'password' => bcrypt('12341234'),
         ]);
 
+        User::create([
+            'name' => 'user',
+            'email' => 'user@test.test',
+            'role' => 'user',
+            'password' => bcrypt('12341234'),
+        ]);
+
+        // dataAdmin::create([
+        //     'training' => 'Laravel',
+        //     'deskripsi' => 'Laravel adalah kerangka kerja aplikasi web berbasis PHP yang sumber terbuka, menggunakan konsep Model-View-Controller. Laravel berada dibawah lisensi MIT, dengan menggunakan GitHub sebagai tempat berbagi kode.',
+        //     'mentor' => 'Edy',
+        //     'waktu' => '2 jam',
+        //     'harga' => '200.000'
+        // ]);
     }
 }

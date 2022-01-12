@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\dataAdmin;
+use App\Models\dataUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class userController extends Controller
@@ -36,7 +38,15 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'namaDepan' => 'required',
+            'namaBelakang' => 'required',
+            'email' => 'required',
+            'no_telp' => 'required',
+            'id_training' => 'required'
+        ]);
+
+        dataUser::create($request->all());
     }
 
     /**

@@ -12,6 +12,7 @@ class dataUser extends Model
     protected $fillable = [
         "namaDepan",
         "namaBelakang",
+        "no_telp",
         "email",
         "number",
         "id_training"

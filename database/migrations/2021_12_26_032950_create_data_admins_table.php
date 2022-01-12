@@ -16,6 +16,8 @@ class CreateDataAdminsTable extends Migration
         Schema::create('data_admins', function (Blueprint $table) {
             $table->id();
             $table->string('training');
+            $table->string('gambar');
+            $table->text('deskripsi');
             $table->string('mentor');
             $table->string('waktu');
             $table->string('harga');

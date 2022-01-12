@@ -22,7 +22,7 @@
                 @foreach ($data as $p)
                 <div class="col-sm-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{url('foto/laravel-featured.png')}}" class="card-img-top" alt="...">
+                        <center><img width="100px" src="{{url('pict/'.$p->gambar)}}"></center>
                         <div class="card-body">
                         <h5 class="card-title">{{ $p->training }}</h5>
                         <p class="card-text"></p>

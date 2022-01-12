@@ -10,6 +10,8 @@ class dataAdmin extends Model
     use HasFactory;
     protected $fillable = [
         'training',
+        'gambar',
+        'deskripsi',
         'mentor',
         'waktu',
         'harga'

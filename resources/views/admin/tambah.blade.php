@@ -38,12 +38,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
       <div class="content">
-        <form method='POST'action="{{route('dataAdmin.store')}}">
+        <form method='POST'action="{{route('dataAdmin.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
               <label for="training" class="form-label">Training</label>
               <input type="text" name="training" class="form-control" id="training">
               <div id="training" class="form-text">Masukkan Training</div>
+            </div>
+            <div class="mb-3">
+              <label for="gambar" class="form-label">gambar</label>
+              <input type="file" name="gambar" class="form-control" id="gambar">
+              <div id="gambar" class="form-text">Masukkan Training</div>
+            </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    <label for="deskripsi" class="form-label">deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi" cols="228" rows="10" id="floatingTextarea2" style="height: 100px"></textarea>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="mentor" class="form-label">Mentor</label>

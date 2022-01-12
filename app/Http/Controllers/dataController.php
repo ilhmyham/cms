@@ -39,12 +39,25 @@ class dataController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'training' => 'required',
-            'mentor' => 'required',
-            'waktu' => 'required',
-            'harga' => 'required',
+            'training'  => 'required',
+            'deskripsi' => 'required',
+            'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'mentor'    => 'required',
+            'waktu'     => 'required',
+            'harga'     => 'required',
         ]);
-        dataAdmin::create($request->all());
+
+        $namaGambar = time() . '.' . $request->gambar->extension();
+        $request->gambar->move(public_path('pict'), $namaGambar);
+
+        dataAdmin::create([
+            'training'  => $request->training,
+            'deskripsi' => $request->deskripsi,
+            'gambar'    => $namaGambar,
+            'mentor'    => $request->mentor,
+            'waktu'     => $request->waktu,
+            'harga'     => $request->harga
+        ]);
         return redirect()->route('dataAdmin.index')->with('success', 'Data Berhasil Di Tambah');
     }
 
@@ -80,12 +93,37 @@ class dataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = dataAdmin::find($id)->update([
+        // dataAdmin::find($id)->update([
+        //     'gambar' => $request->gambar,
+        //     'training' => $request->training,
+        //     'deskripsi' => $request->deskripsi,
+        //     'mentor' => $request->mentor,
+        //     'waktu' => $request->waktu,
+        //     'harga' => $request->harga
+        // ]);
+        // dataAdmin::find($id)->update($request->all());
+
+        $request->validate([
+            'training'  => 'required',
+            'deskripsi' => 'required',
+            'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'mentor'    => 'required',
+            'waktu'     => 'required',
+            'harga'     => 'required',
+        ]);
+
+        $namaGambar = time() . '.' . $request->gambar->extension();
+        $request->gambar->move(public_path('pict'), $namaGambar);
+
+        dataAdmin::find($id)->update([
             'training' => $request->training,
+            'gambar' => $namaGambar,
+            'deskripsi' => $request->deskripsi,
             'mentor' => $request->mentor,
             'waktu' => $request->waktu,
             'harga' => $request->harga
         ]);
+
         return redirect()->route('dataAdmin.index')->with('success', 'Data Berhasil Di Update');
     }
 
