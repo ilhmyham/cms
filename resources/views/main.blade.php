@@ -19,6 +19,11 @@
     <header class="masthead">
         <div class="container px-4 px-lg-5 h-100">
             <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                 @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
                 @foreach ($data as $p)
                 <div class="col-sm-4">
                     <div class="card" style="width: 18rem;">

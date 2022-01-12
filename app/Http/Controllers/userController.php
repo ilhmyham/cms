@@ -17,7 +17,7 @@ class userController extends Controller
     public function index()
     {
         $data = dataAdmin::get();
-        return view('user', compact('data'));
+        return view('main', compact('data'));
     }
 
     /**
@@ -47,6 +47,7 @@ class userController extends Controller
         ]);
 
         dataUser::create($request->all());
+        return redirect()->route('main')->with('success', 'anda Berhasil mendaftar');
     }
 
     /**
